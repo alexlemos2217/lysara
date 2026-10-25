@@ -53,11 +53,6 @@ Una noche, **el Corazón de la Bruma** dejó de latir. Los árboles perdieron su
 2. Abrí `index.html` en un navegador moderno.
 3. Elegí **Comenzar aventura**, leé el prólogo y explorá.
 
-No hace falta instalar paquetes, correr un servidor ni compilar nada. La tipografía opcional puede descargarse de Google Fonts si hay conexión; el juego funciona igual sin ella.
-
-### Publicar en Netlify
-
-Creá un repositorio nuevo en GitHub para este juego (sin reemplazar Pixel Rush ni FARO:09), subí los archivos a la raíz y conectá ese repositorio a Netlify. Configuración: **build command vacío**, **publish directory `.`**, rama de producción `main`.
 
 ## 🛠️ Tecnologías
 
