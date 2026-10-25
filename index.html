@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#080d19" />
+  <meta name="description" content="LYSARA — El Corazón de la Bruma. Una aventura de plataformas, combate y exploración dibujada a mano con código." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>LYSARA — El Corazón de la Bruma</title>
+</head>
+<body>
+  <main class="shell" id="shell">
+    <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="LYSARA inicio"><span class="brand-mark">✦</span><span>LYSARA <small>CHAPTER 00</small></span></a>
+      <div class="top-right"><span class="build">DEMO · PRE-ALPHA</span><button class="icon-button" id="soundBtn" aria-label="Activar o silenciar sonido" title="Sonido">♫</button><button class="icon-button" id="helpBtn" aria-label="Ayuda" title="Controles">?</button></div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="Videojuego LYSARA">
+      <canvas id="game" width="1280" height="720" aria-label="Pantalla del juego"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="stage-eyebrow" id="eyebrow">EL BOSQUE NO OLVIDA · 01 / 03</div>
+      <div class="hud" id="hud" hidden>
+        <div class="hud-left"><div class="hearts" id="hearts" aria-label="Vida"></div><div class="hud-subtitle" id="placeName">SENDERO DE CENIZA</div></div>
+        <div class="hud-right"><div class="relic"><span class="relic-icon">✧</span><strong id="relicNum">0</strong><span class="relic-total">/ 3 ECOS</span></div><div class="dash-indicator" id="dashIndicator"><span>◆</span> IMPULSO</div></div>
+      </div>
+      <div class="notification" id="notification" aria-live="polite"></div>
+      <div class="interaction" id="interaction" hidden><kbd>E</kbd><span id="interactionText">Investigar</span></div>
+      <div class="banner" id="banner" hidden></div>
+      <div class="screen screen-menu" id="menu">
+        <div class="menu-content">
+          <div class="chapter-label"><span class="chapter-line"></span> UNA AVENTURA ENTRE RAÍCES Y RECUERDOS</div>
+          <div class="hero-emblem">✧</div>
+          <h1>LYSARA</h1><p class="hero-subtitle">EL CORAZÓN DE LA BRUMA</p>
+          <p class="hero-description">Cuando el bosque dejó de recordar la luz,<br>una guardiana escuchó su último latido.</p>
+          <div class="menu-buttons"><button class="primary-btn" id="playBtn">COMENZAR AVENTURA <span>→</span></button><button class="secondary-btn" id="continueBtn" hidden>CONTINUAR PARTIDA</button></div>
+          <p class="menu-hint">WASD / FLECHAS · ESPACIO · J · SHIFT</p>
+        </div>
+        <div class="menu-side"><span class="side-num">01 <i></i> 03</span><p>UN MUNDO<br>QUE RESPIRA<br>EN SILENCIO.</p><span class="side-orbit">◯ &nbsp; ◌ &nbsp; ✧</span></div>
+      </div>
+      <div class="screen dialog-screen" id="intro" hidden>
+        <div class="dialog-panel"><div class="dialog-kicker" id="dialogKicker">PRÓLOGO — UNA VOZ ENTRE LA NIEBLA</div><h2 id="dialogTitle">El último jardín</h2><p id="dialogText"></p><div class="dialog-bottom"><span id="dialogCount">01 / 03</span><button class="primary-btn compact" id="dialogNext">CONTINUAR <span>→</span></button></div></div>
+      </div>
+      <div class="screen modal-screen" id="pause" hidden><div class="modal-card"><span class="modal-overline">UN RESPIRO EN LA BRUMA</span><h2>PAUSA</h2><p>El bosque sigue esperando.</p><button class="primary-btn" id="resumeBtn">VOLVER AL JUEGO <span>→</span></button><button class="secondary-btn" id="restartBtn">REINICIAR DESDE EL INICIO</button><button class="subtle-btn" id="menuBtn">VOLVER AL MENÚ</button></div></div>
+      <div class="screen modal-screen" id="help" hidden><div class="modal-card help-card"><span class="modal-overline">MANUAL DE LA GUARDIANA</span><h2>CONTROLES</h2><div class="control-list"><div><kbd>←</kbd><kbd>→</kbd><span>CAMINAR</span></div><div><kbd>ESPACIO</kbd><span>SALTAR · SALTO VARIABLE</span></div><div><kbd>SHIFT</kbd><span>IMPULSO AÉREO</span></div><div><kbd>J</kbd><span>ATAQUE CON LUZ</span></div><div><kbd>E</kbd><span>INTERACTUAR</span></div><div><kbd>ESC</kbd><span>PAUSA</span></div></div><p class="help-note">Recogé tres ecos y buscá el santuario. Los altares guardan tu avance.</p><button class="primary-btn" id="helpClose">ENTENDIDO <span>→</span></button></div></div>
+      <div class="screen modal-screen" id="end" hidden><div class="modal-card ending"><span class="modal-overline">FIN DEL CAPÍTULO 00</span><div class="end-icon">✧</div><h2>EL BOSQUE<br>RECUERDA</h2><p>Los ecos regresaron al corazón del bosque. Pero desde las profundidades, algo respondió a tu llamada.</p><div class="end-stats"><span>ECOS RESCATADOS <b>3 / 3</b></span><span>GUARDIANA <b>IRI</b></span></div><button class="primary-btn" id="againBtn">VOLVER A EXPLORAR <span>→</span></button><button class="subtle-btn" id="endMenuBtn">MENÚ PRINCIPAL</button></div></div>
+      <div class="mobile-controls" id="touchControls" hidden aria-label="Controles táctiles"><div class="touch-left"><button data-key="ArrowLeft" aria-label="Izquierda">◀</button><button data-key="ArrowRight" aria-label="Derecha">▶</button></div><div class="touch-right"><button data-key="KeyE" aria-label="Interactuar" class="touch-interact">E</button><button data-key="KeyJ" aria-label="Atacar" class="touch-attack">✧</button><button data-key="ShiftLeft" aria-label="Impulso" class="touch-dash">◆</button><button data-key="Space" aria-label="Saltar" class="touch-jump">↑</button></div></div>
+      <div class="stage-bottom-left"><span class="live-dot"></span> PROTOTIPO JUGABLE · MOTOR PROPIO</div>
+      <button class="pause-floating" id="pauseBtn" aria-label="Pausar juego" hidden>Ⅱ</button>
+    </section>
+    <footer class="footer"><span>✧ &nbsp; UN MUNDO ORIGINAL POR EXPLORAR</span><span class="footer-center">ARTE PROCEDURAL · CANVAS 2D · SIN DEPENDENCIAS</span><span>HECHO PARA SER JUGADO <span class="footer-star">✦</span></span></footer>
+  </main>
+  <script src="game.js" defer></script>
+</body>
+</html>
